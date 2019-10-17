@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <script>
+
+        var array = [];
+        function userInput() {
+            var firstName = document.getElementById('word0').value;
+            var lastName = document.getElementById('word1').value;
+            var age = document.getElementById('word2').value;
+            var weight = document.getElementById('word3').value;
+
+            var object = {}
+            object.firstName = firstName;
+            object.lastName = lastName;
+            object.age = age;
+            object.weight = weight;
+            console.log(object);
+
+
+            array.push(object);
+            console.log(array);
+
+            var moJSON = JSON.stringify(array);
+            localStorage.setItem('first', moJSON);
+        }
+
+
+    </script>
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <h1>
+        New users give us the following information
+    </h1>
+    <h3>
+        Firstname
+    </h3>
+    <input type=text0 id=word0>
+    <h3>
+        Lastname
+    </h3>
+    <input type=text1 id=word1>
+    <h3>
+        Age
+    </h3>
+    <input type=text2 id=word2>
+    <h3>
+        Weight (kg)
+    </h3>
+    <input type=text3 id=word3>
+    <h3>
+         
+    </h3>
+    <Input type=button onclick='userInput()' value="Click here">
+
+</body>
+
+</html>
