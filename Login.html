@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <script>
+
+        var array = [];
+        function userInput() {
+            var firstName = document.getElementById('word0').value;
+            var lastName = document.getElementById('word1').value;
+            var age = document.getElementById('word2').value;
+            var weight = document.getElementById('word3').value;
+
+            var object = {}
+            object.firstName = firstName;
+            object.lastName = lastName;
+            object.age = age;
+            object.weight = weight;
+            console.log(object);
+
+
+            array.push(object);
+            console.log(array);
+
+            var moJSON = JSON.stringify(array);
+            localStorage.setItem('first', moJSON);
+        }
+        
+
+    </script>
+
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            padding: 18px 16px;
+            border-radius: 12px;
+            width: 24.8%;
+            display: block;
+            float: left;
+            margin: 0.1%
+            }   
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+            }
+
+        .button span::after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+            }
+
+        .button:hover span::after {
+            opacity: 1;
+            right: 0;
+            }
+    </style>
+
+</head>
+
+<body>
+    <h1>
+        To create an account submit the following information
+    </h1>
+    <h3>
+        Firstname
+    </h3>
+    <input type=text0 id=word0>
+    <h3>
+        Lastname
+    </h3>
+    <input type=text1 id=word1>
+    <h3>
+        Age
+    </h3>
+    <input type=text2 id=word2>
+    <h3>
+        Weight (kg)
+    </h3>
+    <input type=text3 id=word3>
+    
+    <h3>
+    Length (cm)
+    </h3>
+    <input type=text4 id=word4> 
+    <h3>
+    </h3>
+    
+    
+        <button class=button onclick='userInput()'><span> My goal</span> </button>
+</body>
+
+</html>
