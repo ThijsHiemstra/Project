@@ -10,7 +10,7 @@
     </script>
 
     <style>
-        .buttonStyle {
+        .button {
             background-color: #4CAF50; /* Green */
             border: none;
             color: white;
@@ -19,24 +19,59 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-}
+            padding: 18px 16px;
+            border-radius: 12px;
+            width: 24.8%;
+            display: block;
+            float: left;
+            margin: 0.1%
+            }   
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+            }
+
+        .button span::after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+            }
+
+        .button:hover span::after {
+            opacity: 1;
+            right: 0;
+            }
+
     </style>
 
 </head>
 
 <body>
     
-    <form action="http://google.com">
-        <input type=submit class="buttonStyle" value='login'>
+    <form action="file:///C:/Hiemstra/Project/Login.html">
+        <button class="button"><span>Login</span></button>
     </form>
-    <form action="http://google.com">
-        <input type=submit class="buttonStyle" value='My schedules'> 
+
+    <form action="file:///C:/Hiemstra/Project/Schedules.html">
+        <button class="button"><span>My schedules</span></button>
     </form>
-    <form action="http://google.com">
-        <input type=submit class="buttonStyle" value="My diet">
+
+    <form action="file:///C:/Hiemstra/Project/Diet.html">
+        <button class="button"><span>My diet</span></button>
     </form> 
-    <form action="http://google.com">
-        <input type=submit class="buttonStyle" value="My goal">
+
+    <form action="file:///C:/Hiemstra/Project/Goal.html">
+        <button class="button"><span>My goal</span></button>
     </form> 
 </body>
 
