@@ -2,9 +2,7 @@
 <script>
     function serveerderInvullen(){
         var api = document.getElementById("apiUrl").value;  
-      
-        }
-
+    }
 
     function getData() {
         var xhr = new XMLHttpRequest();
@@ -15,14 +13,12 @@
 
             }
         }
+
         xhr.open("GET", "http://localhost:8082/activiteit", true);
         xhr.send();
     }
-
-
-
-    
-    function felixfunction(){
+  
+    function postData(){
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             alert("na post");
@@ -30,8 +26,9 @@
 
         xhr.open("POST", "http://localhost:8082/activiteit", true);
         var activiteit = {};
-        activiteit.id = document.getElementById("id").value;
+        activiteit.calPerHour = document.getElementById("JoJo").value;
         activiteit.bezet = true;
+        console.log(activiteit);
         var activiteitJS = JSON.stringify(activiteit);
         xhr.setRequestHeader("Content-Type","application/json");
         xhr.send(activiteitJS);
@@ -41,12 +38,12 @@
 </script>
 
 <body>
-    <input type=button value="Click me" onclick=getData()>
-
+    <input type=text id=JoJo >
     <div id="resultaat"> </div>
-    <input type=text id=id >
-    <input type=button onclick=felixfunction() value="doepost">
+    <input type=button onclick=postData() value="sla op">
 
+
+    <input type=button value="Click me" onclick=getData()>
 </body>
 
 
