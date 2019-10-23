@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-3.4.1.js"></script>    
+<style>
+
+</style>
+
+
+
+<script>
+    function checkjq(){
+        $('#probeerid').hide(300).delay().fadeIn();
+    }
+    
+    function myHandler( event ) {
+        alert(event.data.foo );
+    }
+    $( "p" ).on( "click", { foo: "bar" }, myHandler );
+
+</script>
+</head>
+
+<body>
+
+    <input type="button" onclick='myHandler()'>
+    <div id="probeerid">wat tekst</div>
+</body>
+
+</html>

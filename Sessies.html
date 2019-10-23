@@ -1,8 +1,29 @@
 <html>
+<script>
+    function FindData() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            var haalGegevensJSON = this.responseText;
+            console.log(haalGegevensJSON);
+            var haalGegevens = JSON.parse(haalGegevensJSON);
+            console.log(haalGegevens);
+            var arr = haalGegevens;
+            var tabel = "<table border = '1'><tr><th>ID</th><th>Voornaam</th><th>Achternaam</th><th>Rating</th><th>Geboortedatum</th><th>Geslacht</th>"
+            for (var i=0;i<arr.length;i++){
+                tabel+="<tr><td>"+arr[i].id+"</td><td>"+arr[i].firstName+"</td><td>"+arr[i].lastName+"</td><td>"+arr[i].rating+"</td><td>"+arr[i].dateOfBirth+"</td><td>"+arr[i].gender+"</td></tr>"
+            }
+            tabel+="</table>";
+            document.getElementById("memberlist").innerHTML = tabel;
+        }
+    }
+    xhr.open("GET", "http://localhost:8082/activiteit", true);
+    xhr.send();
+    }
 
-<head>
+</script>
 
-   <style>
+<style>
         .button {
             background-color: #4CAF50; /* Green */
             border: none;
@@ -44,14 +65,8 @@
             opacity: 1;
             right: 0;
             }
-
-    </style>
-
-<script src="jquery-3.4.1.js"></script>
-
-
-<link hreft="go.css" type=stylesheet/css">
-
+</style>
+<head>
 </head>
 
 <body>
@@ -71,7 +86,6 @@
     <form action=doel.html>
         <button class="button"><span>Mijn Doel</span></button>
     </form> 
-    
 </body>
 
 </html>

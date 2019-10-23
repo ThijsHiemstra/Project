@@ -1,4 +1,5 @@
 <html>
+<script src="jquery-3.4.1.js"></script> 
 <script>
 /*    function serveerderInvullen(){
         var api = document.getElementById("apiUrl").value;  
@@ -16,12 +17,6 @@
         xhr.send();
     }*/
   
-    function exerciseSuccess(){
-        
-
-    }
-    
-
     function postResult(){
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
@@ -36,19 +31,76 @@
         var activiteitJS = JSON.stringify(activiteit);
         xhr.setRequestHeader("Content-Type","application/json");
         xhr.send(activiteitJS);
+        alert("Activiteit toegevoegd");
     }
     
 </script>
 
-<body>
-    <from>
-        <h3>Oefening geslaagd</h3>
-        <select id="success">
-            <option value="true">true</option>
-            <option value="false">false</option>
-        </select>
-    </from>
+<style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            padding: 18px 16px;
+            border-radius: 12px;
+            width: 24.8%;
+            display: block;
+            float: left;
+            margin: 0.1%
+            }   
 
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+            }
+
+        .button span::after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+            }
+
+        .button:hover span::after {
+            opacity: 1;
+            right: 0;
+            }
+
+    </style>
+
+<body>
+    
+    <h3 align='right'> Current user: Ipsum Lorum</h3>
+        
+    <form action=login.html>
+        <button class="button"><span>Nieuwe gebruiker / Inloggen</span></button>
+    </form>
+
+    <form action=Sessies.html>
+        <button class="button"><span>Mijn Sessies</span></button>
+    </form>
+
+    <form action=dieet.html>
+        <button class="button"><span>Mijn Dieet</span></button>
+    </form> 
+
+    <form action=doel.html>
+        <button class="button"><span>Mijn Doel</span></button>
+    </form> 
+       
     <from>
         <h3>Type oefening</h3>
         <select id="ExerciseType">
@@ -56,15 +108,19 @@
             <option value="pullUp">Pull-up</option>
         </select>
     </from>
-    
+
+    <from>
+            <h3>Oefening geslaagd</h3>
+            <select id="success">
+                <option value="true" >true</option>
+                <option value="false">false</option>
+            </select>
+        </from>
+
     <h3>Duur wanneer oefening niet volledig is uitgevoerd</h3>
     <input type=text id="Duration">
-    <div id="exerciseDuration"> </div>
+    <h3>    </h3>
     <input type=button onclick=postResult() value="sla op">
 
-    
-    <!-- <input type=button value="Click me" onclick=getData()> -->
 </body>
-
-
 </html>
