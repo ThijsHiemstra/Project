@@ -1,34 +1,12 @@
 <html>
 <script src="jquery-3.4.1.js"></script>
 <script>
-    function FindData() {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            var haalGegevensJSON = this.responseText;
-            console.log(haalGegevensJSON);
-            var haalGegevens = JSON.parse(haalGegevensJSON);
-            console.log(haalGegevens);
-            
-            var arr = haalGegevens;
-            var statsTable = document.createElement("statsTable");
-            console.log('statsTable');
-            let statsTableHead = statsTable.createThead();
-            let statsTableRow = statsTable.insertRow();
-            for (var i=0;i<arr.length;i++){
-                //tabel+=<tr><td>+arr[i].id+</td><td> +arr[i].firstName+ </td><td> +arr[i].lastName+ </td><td> +arr[i].age+ </td><td> +arr[i].userWeight+ </td><td> +arr[i].userLength+ </td></tr>
-            }
-            
-            
-            document.getElementById("memberlist").innerHTML = tabel;
-        }
-    }
-
-    xhr.open("GET", "http://localhost:8082/activiteit", true);
-    xhr.send();
     
+    function FindData() {
+        $.getJSON("http://localhost:8082/activiteit", function(jsonData) {
+            console.log(data)
+    });
     }
-
 </script>
 
 <style>
@@ -96,7 +74,7 @@
         <button class="button"><span>Mijn Doel</span></button>
     </form> 
     
-    <button class="button" onclick='FindData()'><span>Activiteiten ophalen</span></button>
+    <button class="button" onclick="FindData()" ><span>Activiteiten ophalen</span></button>
 
     <table align = 'center' border = '1' id = statsTable>
             <tr>
