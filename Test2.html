@@ -1,48 +1,12 @@
 <html>
 <script src="jquery-3.4.1.js"></script>
 <script>
-    function FindData() {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            var haalGegevensJSON = this.responseText;
-            console.log(haalGegevensJSON);
-            var haalGegevens = JSON.parse(haalGegevensJSON);
-            console.log(haalGegevens);
-            
-            //create table
-            var body = document.getElementById('haalGegevens');
-            var tbl = document.createElement('table');
-            tbl.style.width = '80%';
-            tbl.setAttribute('border', '1');
-            var tbdy = document.createElement('tbody');
-            for (var i = 0; i < 3; i++) {
-                var tr = document.createElement('tr');
-                for (var j = 0; j < 2; j++) {
-                    if (i == 2 && j == 1) {
-                        break
-            }
-        }
-    }
-           /* var arr = haalGegevens;
-            var statsTable = document.createElement("statsTable");
-            console.log('statsTable');
-            let statsTableHead = statsTable.createThead();
-            let statsTableRow = statsTable.insertRow();
-            for (var i=0;i<arr.length;i++){
-                //tabel+=<tr><td>+arr[i].id+</td><td> +arr[i].firstName+ </td><td> +arr[i].lastName+ </td><td> +arr[i].age+ </td><td> +arr[i].userWeight+ </td><td> +arr[i].userLength+ </td></tr>
-            } */
-            
-            
-            document.getElementById("success").innerHTML = tbdy;
-        }
-    }
-
-    xhr.open("GET", "http://localhost:8082/activiteit", true);
-    xhr.send();
     
+    function FindData() {
+        $.getJSON("http://localhost:8082/activiteit", function(jsonData) {
+            console.log(data)
+    });
     }
-
 </script>
 
 <style>
@@ -110,7 +74,7 @@
         <button class="button"><span>Mijn Doel</span></button>
     </form> 
     
-    <button class="button" onclick='FindData()'><span>Activiteiten ophalen</span></button>
+    <button class="button" onclick="FindData()" ><span>Activiteiten ophalen</span></button>
 
     <table align = 'center' border = '1' id = statsTable>
             <tr>

@@ -5,6 +5,12 @@
 
         var array = [];
         function userInput() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+            console.log("na post1");
+            }
+            xhr.open("POST", "http://localhost:8082/user", true);
+            
             var firstName = document.getElementById('Firstname').value;
             var lastName = document.getElementById('Lastname').value;
             var age = document.getElementById('Age').value;
@@ -12,20 +18,25 @@
             var length = document.getElementById('Length').value;
 
             var object = {}
-            object.firstName = firstName;
-            object.lastName = lastName;
+            object.userFirstName = firstName;
+            object.userLastName = lastName;
             object.age = age;
-            object.weight = weight;
-            object.length = length;
+            object.userWeight = weight;
+            object.userHeight = length;
 
             console.log(object);
 
+            var objectJS = JSON.stringify(object);
 
-            array.push(object);
+            xhr.setRequestHeader("Content-Type","application/json");
+            xhr.send(objectJS);
+            alert("Nieuwe gebruiker toegevoegd");
+
+            /*array.push(object);
             console.log(array);
 
             var moJSON = JSON.stringify(array);
-            localStorage.setItem('first', moJSON);
+            localStorage.setItem('first', moJSON); */
         }
         
 
@@ -79,34 +90,34 @@
 
 <body>
     <h1>
-        To create an account submit the following information
+        Voer de gegevens in en klik op Nieuwe Gebruiker Aanmaken
     </h1>
     <h3>
-        Firstname
+            Voornaam
     </h3>
-    <input type=text0 id=Firstname>
+    <input type=text0 id=Voornaam>
     <h3>
-        Lastname
+        Achternaam
     </h3>
-    <input type=text1 id=Lastname>
+    <input type=text1 id=Achternaam>
     <h3>
-        Age
+        Leeftijd
     </h3>
-    <input type=text2 id=Age>
+    <input type=text2 id=Leeftijd>
     <h3>
-        Weight (kg)
+        Gewicht (kg)
     </h3>
-    <input type=text3 id=Weight>
+    <input type=text3 id=Gewicht>
     
     <h3>
-    Length (cm)
+    Lengte (cm)
     </h3>
-    <input type=text4 id=Length> 
+    <input type=text4 id=Lengte> 
     <h3>
     </h3>
     
     
-        <button class=button onclick='userInput()'><span> Create new user</span> </button>
+        <button class=button onclick='userInput()'><span> Nieuwe Gebruiker Aanmaken</span> </button>
 </body>
 
 </html>
