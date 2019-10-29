@@ -1,6 +1,14 @@
 <html>
 <script src="jquery-3.4.1.js"></script>
 <script>
+
+    var _table_ = document.createElement('table'),
+                _tr_ = document.createElement('tr'),
+                _th_ = document.createElement('th'),
+                _td_ = document.createElement('td');
+
+    var haalGegevens;
+
     function FindData() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -9,39 +17,25 @@
             console.log(haalGegevensJSON);
             var haalGegevens = JSON.parse(haalGegevensJSON);
             console.log(haalGegevens);
-            
-            //create table
-            var body = document.getElementById('haalGegevens');
-            var tbl = document.createElement('table');
-            tbl.style.width = '80%';
-            tbl.setAttribute('border', '1');
-            var tbdy = document.createElement('tbody');
-            for (var i = 0; i < 3; i++) {
-                var tr = document.createElement('tr');
-                for (var j = 0; j < 2; j++) {
-                    if (i == 2 && j == 1) {
-                        break
-            }
-        }
-    }
-           /* var arr = haalGegevens;
-            var statsTable = document.createElement("statsTable");
-            console.log('statsTable');
-            let statsTableHead = statsTable.createThead();
-            let statsTableRow = statsTable.insertRow();
+
+           
+            var arr = haalGegevens;
+            var statsTable = "<table border = '1'>";
+            //var a = 4;
+            let statsTableHead = statsTable.createThead;
+            let statsTableRow = statsTable.insertRow;
             for (var i=0;i<arr.length;i++){
-                //tabel+=<tr><td>+arr[i].id+</td><td> +arr[i].firstName+ </td><td> +arr[i].lastName+ </td><td> +arr[i].age+ </td><td> +arr[i].userWeight+ </td><td> +arr[i].userLength+ </td></tr>
-            } */
-            
-            
-            document.getElementById("success").innerHTML = tbdy;
+                statsTable += "<tr border><td>"+arr[i].id+"</td><td>" +arr[i].typeOfExercise+ "</td><td>" +arr[i].calPerHour+"</td><td>" +arr[i].durationOfExercise+ "</td><td>" +arr[i].success+ "</td><td>" +arr[i].timeIfFail+ "</td><td>" +arr[i].calBurned+ "</td></tr>"
+            }
+            statsTable += "</table>"    
+            document.getElementById("activiteitTabel").innerHTML = statsTable;       
         }
     }
 
     xhr.open("GET", "http://localhost:8082/activiteit", true);
     xhr.send();
-    
     }
+    
 
 </script>
 
@@ -93,7 +87,7 @@
 
 <body>
     
-    <h3 align='right'> Current user: Ipsum Lorum</h3>
+    <h3 align='right'> Huidige gebruiker: Ipsum Lorum</h3>
     <form action=login.html>
         <button class="button"><span>Nieuwe Gebruiker / Inloggen </span></button>
     </form>
@@ -112,7 +106,7 @@
     
     <button class="button" onclick='FindData()'><span>Activiteiten ophalen</span></button>
 
-    <table align = 'center' border = '1' id = statsTable>
+    <!--<table align = 'center' border = '1' id = statsTable>
             <tr>
                 <th>ID</th>
                 <th>Voornaam</th>
@@ -121,7 +115,8 @@
                 <th>userWeight</th>
                 <th>userLength</th>
             </tr>
-    </table>
+    </table> -->
+    <div id = "activiteitTabel">      </div>
 </body>
 
 </html>
